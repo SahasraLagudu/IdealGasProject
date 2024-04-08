@@ -1,4 +1,4 @@
-package proj;
+package IdealGasSimulator;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -8,6 +8,8 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -31,6 +33,7 @@ public class MainDisplay extends JFrame {
 	private JTextField txtTemperature;
 	private JTextField txtMoles;
 	JLabel lblInfo;
+	JLabel lblImage;
 	private JTextField txtOldPressure;
 	private JTextField txtOldVolume;
 	private JTextField txtOldTemp;
@@ -59,7 +62,7 @@ public class MainDisplay extends JFrame {
 public MainDisplay() {
 	setTitle("Ideal Gas Simulator");
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 450, 449);
+	setBounds(100, 100, 559, 676);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -110,16 +113,7 @@ public MainDisplay() {
 			txtMoles.setText("10.0");
 			txtTemperature.setText("273.15");
 			lblInfo.setText("");
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			lblImage.setIcon(new ImageIcon(MainDisplay.class.getResource("/IdealGasSimulator/slowmoving.gif")));
 		}
 	});
 	btnReset.setBounds(19, 203, 117, 29);
@@ -179,7 +173,7 @@ public MainDisplay() {
 
 	lblInfo = new JLabel("");
 	lblInfo.setBackground(Color.RED);
-	lblInfo.setBounds(58, 239, 362, 159);
+	lblInfo.setBounds(19, 243, 514, 26);
 	contentPane.add(lblInfo);
 
 	JButton btnNewButton = new JButton("Display");
@@ -196,8 +190,7 @@ public MainDisplay() {
 	JButton btnNewButton_2 = new JButton("Increased?");
 	btnNewButton_2.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			//faster moving particles
-
+			lblImage.setIcon(new ImageIcon(MainDisplay.class.getResource("/IdealGasSimulator/Gaz_molecules.gif")));
 		}
 	});
 
@@ -205,13 +198,21 @@ public MainDisplay() {
 	contentPane.add(btnNewButton_2);
 
 	JButton btnNewButton_2_1 = new JButton("Increased?");
+	btnNewButton_2_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			lblImage.setIcon(new ImageIcon(MainDisplay.class.getResource("/IdealGasSimulator/fastmoving.gif")));
+		}
+	});
 	btnNewButton_2_1.setBounds(344, 64, 100, 29);
-	//larger container
 	contentPane.add(btnNewButton_2_1);
 
 	JButton btnNewButton_2_2 = new JButton("Increased?");
+	btnNewButton_2_2.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			lblImage.setIcon(new ImageIcon(MainDisplay.class.getResource("/IdealGasSimulator/Gaz_molecules.gif")));
+		}
+	});
 	btnNewButton_2_2.setBounds(344, 109, 100, 29);
-	//fast moving particles
 	contentPane.add(btnNewButton_2_2);
 
 	JButton btnNewButton_2_3 = new JButton("Increased?");
@@ -237,6 +238,10 @@ public MainDisplay() {
 	txtOldMol.setColumns(10);
 	txtOldMol.setBounds(240, 155, 78, 26);
 	contentPane.add(txtOldMol);
+	
+	lblImage = new JLabel("");
+	lblImage.setBounds(10, 286, 523, 340);
+	contentPane.add(lblImage);
 
 	}
 	
