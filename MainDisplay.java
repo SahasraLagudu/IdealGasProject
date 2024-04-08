@@ -1,7 +1,9 @@
-package IdealGasSimulator;
+package proj;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.util.*; 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,12 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 
 public class MainDisplay extends JFrame {
 
@@ -30,7 +35,6 @@ public class MainDisplay extends JFrame {
 	private JTextField txtOldVolume;
 	private JTextField txtOldTemp;
 	private JTextField txtOldMol;
-	private Program panel_11; 
 	//private java.util.List<Ball> balls;
 
 /**
@@ -110,6 +114,12 @@ public MainDisplay() {
 			
 			
 			
+			
+			
+			
+			
+			
+			
 		}
 	});
 	btnReset.setBounds(19, 203, 117, 29);
@@ -177,7 +187,7 @@ public MainDisplay() {
 		public void actionPerformed(ActionEvent e) {
 			lblInfo.setText("Pressure: " + txtPressure.getText() + "\n" + " Volume: " + txtVolume.getText() + "\n" +
 					" Temperature: " + txtTemperature.getText() + "\n" +
-					"Moles: " + txtMoles.getText());
+					" Moles: " + txtMoles.getText());
 		}
 	});
 	btnNewButton.setBounds(173, 203, 117, 29);
@@ -186,6 +196,7 @@ public MainDisplay() {
 	JButton btnNewButton_2 = new JButton("Increased?");
 	btnNewButton_2.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			//faster moving particles
 
 		}
 	});
@@ -195,10 +206,12 @@ public MainDisplay() {
 
 	JButton btnNewButton_2_1 = new JButton("Increased?");
 	btnNewButton_2_1.setBounds(344, 64, 100, 29);
+	//larger container
 	contentPane.add(btnNewButton_2_1);
 
 	JButton btnNewButton_2_2 = new JButton("Increased?");
 	btnNewButton_2_2.setBounds(344, 109, 100, 29);
+	//fast moving particles
 	contentPane.add(btnNewButton_2_2);
 
 	JButton btnNewButton_2_3 = new JButton("Increased?");
@@ -225,70 +238,6 @@ public MainDisplay() {
 	txtOldMol.setBounds(240, 155, 78, 26);
 	contentPane.add(txtOldMol);
 
-	panel_11 = new Program();
-	panel_11.setBackground(Color.BLACK);
-	panel_11.setBounds(111, 243, 257, 139);
-	contentPane.add(panel_11);
-	
 	}
-
-public class Program extends JPanel {
-	public class Ball{
-		private int posX, posY, size;
-        private Color color;
-
-        private int vx = 5;
-        private int vy = 5;
-
-        public Ball(int posX, int posY, int size, Color color, int vx, int vy) {
-            this.posX = posX;
-            this.posY = posY;
-            this.size = size;
-            this.color = color;
-            this.vx = vx;
-            this.vy = vy;
-        }
-
-        void update() {
-
-            if (posX > panel_11.getWidth() || posX < 0) {
-                vx *= -1;
-            }
-
-            if (posY > panel_11.getHeight() || posY < 0) {
-                vy *= -1;
-            }
-
-            if (posX > panel_11.getWidth()) {
-                posX = panel_11.getWidth();
-            }
-
-            if (posX < 0) {
-                posX = 0;
-            }
-
-            if (posY > panel_11.getHeight()) {
-                posY = panel_11.getHeight();
-            }
-
-            if (posY < 0) {
-                posY = 0;
-            }
-
-            this.posX += vx;
-            this.posY += vy;
-
-        }
-
-        void draw(Graphics g) {
-            g.setColor(color);
-            g.fillOval(posX, posY, size, size);
-        }
-    }
 	
-
-
-
-	
-}
 }
